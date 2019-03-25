@@ -20,7 +20,7 @@ public class TreeContainer<K extends AbstractTreeManager, V> extends Observable 
         addObserver(new Subscriber());
     }
 
-    public TreeContainer(Node<K, V> root) {
+    private TreeContainer(Node<K, V> root) {
         this.root = root;
         addObserver(new Subscriber());
     }
@@ -38,7 +38,7 @@ public class TreeContainer<K extends AbstractTreeManager, V> extends Observable 
         }
     }
 
-    public void put(Node<K, V> node, K parentKey, K key, V val) {
+    private void put(Node<K, V> node, K parentKey, K key, V val) {
         if (node != null) {
             if (node.key.equals(parentKey)){
                 node.children.add(new Node<>(key, val));
@@ -150,7 +150,7 @@ public class TreeContainer<K extends AbstractTreeManager, V> extends Observable 
         return stringBuilder.toString();
     }
 
-    public void setSubscriberNotification(String subscriberNotification) {
+    private void setSubscriberNotification(String subscriberNotification) {
         this.subscriberNotification = subscriberNotification;
         setChanged();
         notifyObservers();
